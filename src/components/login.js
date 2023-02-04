@@ -5,9 +5,12 @@ export default function Login() {
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [error,SetError] = useState(false)
     
     const submit = (e) => {
         e.preventDefault();
+        if(email.length==0|password.length==0)
+        SetError(true)
         
         fetch ("http://localhost:5000/login-user", {
             method:"POST",
@@ -41,6 +44,8 @@ export default function Login() {
                     onChange={(e)=> setEmail(e.target.value)}
                 />
             </div>
+            {error&&email.length <=0?
+                    <h7>fill this field</h7>:""}
 
             <div className="mb-3">
                 <label>Password</label>
@@ -52,6 +57,9 @@ export default function Login() {
                     onChange={(e)=> setPassword(e.target.value)}
                 />
             </div>
+            {error&&password.length <=0?
+                    <h7>fill this field</h7>:""}
+            
 
             <div className="mb-3">
                 <div className="custom-control custom-checkbox">

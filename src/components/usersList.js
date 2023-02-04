@@ -57,6 +57,8 @@ export default function UserList() {
                 </div>
             </nav>
             
+            <h3>Registration list</h3>
+
             <div className="container">
                 <table className="table">
                     <thead>

@@ -8,9 +8,12 @@ export default function SignUp() {
     const [lname, setLname] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [error,SetError] = useState(false)
 
     const submit = (e) => {
         e.preventDefault();
+        if(fname.length==0|lname.length==0|email.length==0|password.length==0)
+        SetError(true)
         
         fetch ("http://localhost:5000/register",{
             method:"POST",
@@ -50,7 +53,9 @@ export default function SignUp() {
                         value={fname}
                         onChange={(e)=> setFname(e.target.value)}
                     />
-                </div>
+                    </div>
+                    {error&&fname.length <=0?
+                    <h7>fill this field</h7>:""}
 
                 <div className="mb-3">
                     <label>Last name</label>
@@ -59,6 +64,8 @@ export default function SignUp() {
                     onChange={(e)=> setLname(e.target.value)}
                     />
                 </div>
+                {error&&lname.length <=0?
+                    <h7>fill this field</h7>:""}
 
                 <div className="mb-3">
                     <label>Email address</label>
@@ -70,6 +77,8 @@ export default function SignUp() {
                         onChange={(e) => setEmail(e.target.value)}
                     />
                 </div>
+                {error&&email.length <=0?
+                    <h7>fill this field</h7>:""}
 
                 <div className="mb-3">
                     <label>Password</label>
@@ -81,6 +90,9 @@ export default function SignUp() {
                         onChange={(e) => setPassword(e.target.value)}
                     />
                 </div>
+
+                {error&&password.length <=0?
+                    <h7>fill this field</h7>:""}
 
                 <div className="d-grid">
                     <button type="submit" className="btn btn-primary">
