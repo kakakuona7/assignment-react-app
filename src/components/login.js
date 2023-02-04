@@ -5,12 +5,12 @@ export default function Login() {
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [error,SetError] = useState(false)
+    const [error,setError] = useState(false)
     
     const submit = (e) => {
         e.preventDefault();
         if(email.length==0|password.length==0)
-        SetError(true)
+        setError(true)
         
         fetch ("http://localhost:5000/login-user", {
             method:"POST",

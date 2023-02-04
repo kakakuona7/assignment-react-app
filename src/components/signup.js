@@ -8,12 +8,12 @@ export default function SignUp() {
     const [lname, setLname] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [error,SetError] = useState(false)
+    const [error, setError] = useState(false)
 
     const submit = (e) => {
         e.preventDefault();
         if(fname.length==0|lname.length==0|email.length==0|password.length==0)
-        SetError(true)
+        setError(true)
         
         fetch ("http://localhost:5000/register",{
             method:"POST",
